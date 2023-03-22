@@ -8,23 +8,25 @@ const ThoughtsList = ({ loading, thoughtsList, handleNewHeart }) => {
   }
 
   return (
+    <>
       {thoughtsList.reverse().map((thought) => (
         <section className="thought-message-container" key={thought._id}>
 
-          <div className="thought-container">
-            <textarea className="thought-text">{thought.message}</textarea>
-          </div>
+          <p className="thought-text">{thought.message}</p>
 
           <div className="heart-timestamp-container">
-            <button type="button" className="heart-button" onClick={() => { handleNewHeart(thought._id) }}>❤️</button>
-            <div className="heart-counter">x {thought.hearts}</div>
+            <div className="heart-button-and-counter">
+              <button className={thought.hearts === 0 ? 'not-liked-class' : 'liked-class'} type="button" onClick={() => { handleNewHeart(thought._id) }}>❤️</button>
+              <div className="heart-counter">x {thought.hearts}</div>
+            </div>
             <div className="timestamp">
               {formatDistance(new Date(thought.createdAt), Date.now(), { addSuffix: true })}
             </div>
           </div>
-          
+
         </section>
       ))}
+    </>
   )
 }
 

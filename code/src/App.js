@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ThoughtsForm from 'components/ThoughtsForm';
 import ThoughtsList from 'components/ThoughtsList';
+import './App.css'
 
 export const App = () => {
   const [thoughtsList, setThoughtsList] = useState([])
@@ -29,24 +30,26 @@ export const App = () => {
 
     fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', {
       method: 'POST',
-      body: JSON.stringify({ message: newThoughtMessage })
+      body: JSON.stringify({
+        message: newThoughtMessage
+      })
     })
       .then((response) => response.json())
-      .then((newThought) => {
-        setThoughtsList((previousThoughts) => [newThought, ...previousThoughts])
-      })
+      .then(() => fetchThoughts())
+      .finally(setNewThoughtMessage(''))
   }
 
   const handleNewHeart = (_id) => {
-    fetch(`https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${_id}/like`)
+    fetch(`https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${_id}/like`, {
+      method: 'POST'
+    })
       .then((response) => response.json())
-      .then(() => fetchThoughts())
       .catch((error) => console.log(error))
-      .finally(() => setNewThoughtMessage)
+      .finally(() => fetchThoughts(''))
   }
 
   return (
-    <div>
+    <div className="app-body">
       <ThoughtsForm
         newThoughtMessage={newThoughtMessage}
         handleNewThought={handleNewThought}
