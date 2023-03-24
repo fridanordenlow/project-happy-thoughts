@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import ThoughtsForm from 'components/ThoughtsForm';
 import ThoughtsList from 'components/ThoughtsList';
+import Footer from 'components/Footer';
 import './App.css'
 
 export const App = () => {
@@ -73,6 +74,7 @@ export const App = () => {
         loading={loading}
         thoughtsList={thoughtsList}
         handleNewHeart={handleNewHeart} />
+      <Footer />
     </div>
   );
 }
