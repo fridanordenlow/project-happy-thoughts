@@ -1,0 +1,73 @@
+.thought-message-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 80%;
+    box-shadow: 7px 7px black;
+    margin: 15px 0px 20px 0px;
+    padding: 15px;
+}
+
+.thought-text {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 16px;
+    overflow-wrap: break-word;
+    border: none;
+}
+
+.heart-timestamp-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heart-button-and-counter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.liked-class {
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: pink;
+    border: none;
+    margin-right: 5px;
+} 
+
+.liked-class:hover {
+    cursor: pointer;
+}
+
+.not-liked-class {
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: lightgray;
+    border: none;
+    margin-right: 5px;
+}
+
+.not-liked-class:hover {
+    cursor: pointer;
+}
+
+.heart-counter {
+    font-size: 14px;
+    color: gray;
+}
+
+.timestamp {
+    font-size: 14px;
+    color: rgb(171, 171, 171);
+}
+
+@media (min-width: 558px) {
+
+    .thought-message-container {
+        width: 450px;
+    }
+
+}

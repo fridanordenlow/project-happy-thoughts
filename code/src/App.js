@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import ThoughtsForm from 'components/ThoughtsForm';
 import ThoughtsList from 'components/ThoughtsList';
@@ -20,7 +21,6 @@ export const App = () => {
     fetchThoughts()
   }, [])
 
-  // handleNewTodoChange
   const handleNewThought = (event) => {
     setNewThoughtMessage(event.target.value)
   }
@@ -28,24 +28,39 @@ export const App = () => {
   const onFormSubmit = (event) => {
     event.preventDefault()
 
-    fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', {
+    const options = {
       method: 'POST',
       body: JSON.stringify({
-        message: newThoughtMessage
-      })
-    })
+        message: `${newThoughtMessage}`
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    }
+
+    fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', options)
       .then((response) => response.json())
-      .then(() => fetchThoughts())
-      .finally(setNewThoughtMessage(''))
+      .then((data) => { setThoughtsList([data, ...thoughtsList]) })
+      .catch((error) => console.log(error))
+      .finally(() => { setLoading(false); setNewThoughtMessage('') })
   }
 
-  const handleNewHeart = (_id) => {
-    fetch(`https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${_id}/like`, {
-      method: 'POST'
+  const handleNewHeart = (thoughtId) => {
+    fetch(`https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${thoughtId}/like`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
     })
       .then((response) => response.json())
+      .then((data) => {
+        const updateHearts = thoughtsList.map((like) => {
+          if (like._id === data._id) {
+            like.hearts += 1
+            return like
+          } else {
+            return like
+          }
+        })
+        setThoughtsList(updateHearts)
+      })
       .catch((error) => console.log(error))
-      .finally(() => fetchThoughts(''))
   }
 
   return (
