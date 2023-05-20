@@ -12,9 +12,10 @@ export const App = () => {
 
   const fetchThoughts = () => {
     setLoading(true)
-    fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts')
+    // fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts') Technigo's API
+    fetch('https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts')
       .then((response) => response.json())
-      .then((data) => setThoughtsList(data))
+      .then((data) => setThoughtsList(data.response))
       .catch((error) => console.log(error))
       .finally(() => setLoading(false))
   }
@@ -37,7 +38,8 @@ export const App = () => {
       headers: { 'Content-Type': 'application/json' }
     }
 
-    fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', options)
+    // fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', options) Technigo's API
+    fetch('https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts', options)
       .then((response) => response.json())
       .then((data) => { setThoughtsList([data, ...thoughtsList]) })
       .catch((error) => console.log(error))
@@ -45,10 +47,14 @@ export const App = () => {
   }
 
   const handleNewHeart = (thoughtId) => {
-    fetch(`https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${thoughtId}/like`, {
-      method: 'POST',
+    fetch(`https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts/${thoughtId}/like`, {
+      method: 'PATCH',
       headers: { 'Content-Type': 'application/json' }
     })
+    // fetch(`https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${thoughtId}/like`, {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' }
+    // }) Technigo's API
       .then((response) => response.json())
       .then((data) => {
         const updateHearts = thoughtsList.map((like) => {
