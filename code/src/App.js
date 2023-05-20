@@ -10,6 +10,7 @@ export const App = () => {
   const [loading, setLoading] = useState(false)
   const [newThoughtMessage, setNewThoughtMessage] = useState('')
 
+  // Fetch thoughts
   const fetchThoughts = () => {
     setLoading(true)
     // fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts') Technigo's API
@@ -41,11 +42,12 @@ export const App = () => {
     // fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', options) Technigo's API
     fetch('https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts', options)
       .then((response) => response.json())
-      .then((data) => { setThoughtsList([data, ...thoughtsList]) })
+      .then((data) => { setThoughtsList([data.response, ...thoughtsList]) })
       .catch((error) => console.log(error))
       .finally(() => { setLoading(false); setNewThoughtMessage('') })
   }
 
+  // Fetch likes
   const handleNewHeart = (thoughtId) => {
     fetch(`https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts/${thoughtId}/like`, {
       method: 'PATCH',
@@ -58,7 +60,7 @@ export const App = () => {
       .then((response) => response.json())
       .then((data) => {
         const updateHearts = thoughtsList.map((like) => {
-          if (like._id === data._id) {
+          if (like._id === data.response._id) {
             like.hearts += 1
             return like
           } else {
