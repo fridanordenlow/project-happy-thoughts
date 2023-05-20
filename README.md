@@ -8,4 +8,4 @@ After going through this week's material I started practising by doing the examp
 
 ## View it live
 
-https://mellow-panda-04a9c0.netlify.app/
+https://happy-thoughts-by-frida.netlify.app/
