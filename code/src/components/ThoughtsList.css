@@ -1,6 +1,7 @@
 .thought-message-container {
     display: flex;
     flex-direction: column;
+    background-color: white;
     border: 1px solid black;
     width: 80%;
     box-shadow: 7px 7px black;
@@ -31,27 +32,33 @@
 .liked-class {
     width: 36px;
     height: 36px;
+    padding-top: 2px;
+    font-size: 16px;
     border-radius: 18px;
-    background-color: pink;
+    background-color: #FCC8D1;
     border: none;
     margin-right: 5px;
 } 
 
 .liked-class:hover {
     cursor: pointer;
+    background-color: #fcbcc7;
 }
 
 .not-liked-class {
     width: 36px;
     height: 36px;
+    padding-top: 2px;
+    font-size: 16px;
     border-radius: 18px;
-    background-color: lightgray;
+    background-color: #DAEAF1;
     border: none;
     margin-right: 5px;
 }
 
 .not-liked-class:hover {
     cursor: pointer;
+    background-color: #DAEAF1;
 }
 
 .heart-counter {

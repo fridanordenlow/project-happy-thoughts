@@ -18,7 +18,7 @@ const ThoughtsList = ({ loading, thoughtsList, handleNewHeart }) => {
           <div className="heart-timestamp-container">
             <div className="heart-button-and-counter">
               <button className={thought.hearts === 0 ? 'not-liked-class' : 'liked-class'} type="button" aria-label="like thought button" onClick={() => { handleNewHeart(thought._id) }}>
-                <span aria-label="heart emoji">❤️</span>
+                <span aria-label="heart emoji">💛</span>
               </button>
               <div className="heart-counter" aria-label="amount of likes">x {thought.hearts}</div>
             </div>

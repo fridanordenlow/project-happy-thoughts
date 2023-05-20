@@ -1,0 +1,10 @@
+.header-container {
+    margin: 0px;
+}
+
+.header-title {
+    margin-top: 0px;
+    font-size: 36px;
+    word-spacing: -7px;
+    /* text-shadow: 2px 2px #ffd862;*/
+}

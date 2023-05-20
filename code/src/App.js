@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ThoughtsForm from 'components/ThoughtsForm';
 import ThoughtsList from 'components/ThoughtsList';
 import Footer from 'components/Footer';
+import Header from 'components/Header';
 import './App.css'
 
 export const App = () => {
@@ -74,6 +75,7 @@ export const App = () => {
 
   return (
     <div className="app-body">
+      <Header />
       <ThoughtsForm
         newThoughtMessage={newThoughtMessage}
         handleNewThought={handleNewThought}

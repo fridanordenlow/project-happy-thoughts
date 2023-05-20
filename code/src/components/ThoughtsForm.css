@@ -27,15 +27,15 @@
     font-family: 'Source Code Pro', monospace;
     width: fit-content;
     color: black;
-    background-color: pink;
+    background-color: #FCC8D1;
     border-radius: 23px;
-    padding: 5px 12px 6px 12px;
+    padding: 6px 12px 6px 12px;
     margin: 5px 0px 0px 0px;
 }
 
 .submit-button:hover {
     cursor: pointer;
-    background-color: rgb(253, 174, 187);
+    background-color: #fcbcc7;
 }
 
 @media (min-width: 558px) {
