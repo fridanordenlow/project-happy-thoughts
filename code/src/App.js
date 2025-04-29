@@ -17,7 +17,7 @@ export const App = () => {
     fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts') // Technigo's API
     // fetch('https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts') // Mitt egna API som ligger nere (Google Cloud Run)
       .then((response) => response.json())
-      .then((data) => setThoughtsList(data)) // data.response för mitt API
+      .then((data) => setThoughtsList(data)) // data.response for my API
       .catch((error) => console.log(error))
       .finally(() => setLoading(false))
   }
@@ -40,8 +40,8 @@ export const App = () => {
       headers: { 'Content-Type': 'application/json' }
     }
 
-    // fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', options) Technigo's API
-    fetch('https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts', options)
+    fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', options) Technigo's API
+    // fetch('https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts', options) // My API
       .then((response) => response.json())
       .then((data) => { setThoughtsList([data.response, ...thoughtsList]) })
       .catch((error) => console.log(error))
@@ -50,14 +50,14 @@ export const App = () => {
 
   // Fetch likes
   const handleNewHeart = (thoughtId) => {
-    fetch(`https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts/${thoughtId}/like`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' }
-    })
-    // fetch(`https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${thoughtId}/like`, {
-    //   method: 'POST',
+    // fetch(`https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts/${thoughtId}/like`, {
+    //   method: 'PATCH',
     //   headers: { 'Content-Type': 'application/json' }
-    // }) Technigo's API
+    // }) // My API
+    fetch(`https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${thoughtId}/like`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    }) // Technigo's API
       .then((response) => response.json())
       .then((data) => {
         const updateHearts = thoughtsList.map((like) => {
