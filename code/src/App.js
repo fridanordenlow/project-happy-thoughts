@@ -40,10 +40,10 @@ export const App = () => {
       headers: { 'Content-Type': 'application/json' }
     }
 
-    fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', options) Technigo's API
+    fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', options) // Technigo's API
     // fetch('https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts', options) // My API
       .then((response) => response.json())
-      .then((data) => { setThoughtsList([data.response, ...thoughtsList]) })
+      .then((data) => { setThoughtsList([data, ...thoughtsList]) }) // data.response for my API
       .catch((error) => console.log(error))
       .finally(() => { setLoading(false); setNewThoughtMessage('') })
   }
@@ -61,7 +61,7 @@ export const App = () => {
       .then((response) => response.json())
       .then((data) => {
         const updateHearts = thoughtsList.map((like) => {
-          if (like._id === data.response._id) {
+          if (like._id === data._id) { // data.response._id for my API structure
             like.hearts += 1
             return like
           } else {
