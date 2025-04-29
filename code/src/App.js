@@ -14,10 +14,10 @@ export const App = () => {
   // Fetch thoughts
   const fetchThoughts = () => {
     setLoading(true)
-    // fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts') Technigo's API
-    fetch('https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts')
+    fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts') // Technigo's API
+    // fetch('https://project-happy-thoughts-api-i35fofwaaq-lz.a.run.app/thoughts') // Mitt egna API som ligger nere (Google Cloud Run)
       .then((response) => response.json())
-      .then((data) => setThoughtsList(data.response))
+      .then((data) => setThoughtsList(data)) // data.response för mitt API
       .catch((error) => console.log(error))
       .finally(() => setLoading(false))
   }
